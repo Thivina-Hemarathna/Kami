@@ -319,6 +319,176 @@
     /* ══ REVEAL ══ */
     .reveal { opacity:0; transform:translateY(40px); transition:opacity .9s ease,transform .9s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ══ NIGHT LETTER DOUBLE-CLICK SECRET ══ */
+    #nightHiddenLine {
+      display:none; margin-top:1.6rem;
+      font-family:'Cormorant Garamond',serif; font-style:italic;
+      font-size:clamp(1.05rem,2vw,1.25rem); line-height:1.95; font-weight:300;
+      color:#f0b0c0; text-align:center; padding:1.2rem 1.6rem;
+      border-top:1px solid rgba(240,160,184,.2); border-bottom:1px solid rgba(240,160,184,.2);
+      animation:nightLineReveal .8s ease forwards;
+    }
+    #nightHiddenLine.show { display:block; }
+    @keyframes nightLineReveal { from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)} }
+    #nightDoubleHint {
+      font-family:'Jost',sans-serif; font-weight:200; font-size:10px;
+      letter-spacing:.3em; text-transform:uppercase;
+      color:rgba(240,160,184,.18); text-align:center; margin-top:.5rem;
+      cursor:default; user-select:none;
+    }
+
+    /* ══ SPINNER ══ */
+    .spinner-section { position:relative; z-index:1; padding:5rem 2rem; text-align:center; background:linear-gradient(135deg,#f9e0e6,#fdf6ee,#f5e8ef); }
+    .spinner-heading { font-family:'Pinyon Script',cursive; font-size:clamp(2.5rem,8vw,5rem); color:var(--rose); margin-bottom:.4rem; }
+    .spinner-sub { font-style:italic; color:var(--muted); font-size:1.05rem; margin-bottom:2.5rem; }
+    .spinner-wheel-wrap { position:relative; width:220px; height:220px; margin:0 auto 2rem; }
+    .spinner-wheel {
+      width:220px; height:220px; border-radius:50%;
+      border:3px solid var(--rose); position:relative;
+      display:flex; align-items:center; justify-content:center;
+      transition:transform 2.5s cubic-bezier(.17,.67,.12,1);
+      background:radial-gradient(circle at 40% 35%,#fff8f0,#f9e4eb);
+      box-shadow:0 8px 40px rgba(194,67,90,.15);
+    }
+    .spinner-inner-text {
+      font-family:'Cormorant Garamond',serif; font-style:italic;
+      font-size:1.05rem; font-weight:300; color:var(--dark);
+      max-width:160px; line-height:1.5; text-align:center;
+      padding:.5rem; transition:opacity .3s ease;
+    }
+    .spinner-inner-text.spinning { opacity:0; }
+    .spinner-dot { position:absolute; top:-6px; left:50%; transform:translateX(-50%);
+      width:12px; height:12px; border-radius:50%; background:var(--rose); }
+    .spinner-btn {
+      background:var(--rose); color:#fff; border:none;
+      padding:.9rem 2.6rem; border-radius:40px;
+      font-family:'Jost',sans-serif; font-weight:300; font-size:12px;
+      letter-spacing:.2em; text-transform:uppercase; cursor:pointer;
+      box-shadow:0 4px 20px rgba(194,67,90,.4);
+      transition:transform .2s,box-shadow .2s;
+    }
+    .spinner-btn:hover { transform:scale(1.06); }
+    .spinner-btn:disabled { opacity:.5; cursor:default; transform:none; }
+    .spinner-label { margin-top:1.2rem; font-family:'Jost',sans-serif; font-weight:200;
+      font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); }
+
+    /* ══ ACROSTIC ══ */
+    .acrostic-section { position:relative; z-index:1; padding:5rem 2rem; background:var(--night); text-align:center; }
+    .acrostic-label { font-family:'Jost',sans-serif; font-weight:200; font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; display:block; }
+    .acrostic-heading { font-family:'Pinyon Script',cursive; font-size:clamp(2.5rem,8vw,5.5rem); color:#f0a0b8; margin-bottom:3rem; line-height:1; }
+    .acrostic-poem { max-width:600px; margin:0 auto; }
+    .acrostic-line {
+      display:flex; align-items:baseline; gap:1.2rem;
+      margin-bottom:1.8rem; opacity:0; transform:translateX(-30px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .acrostic-line.visible { opacity:1; transform:translateX(0); }
+    .acrostic-letter {
+      font-family:'Pinyon Script',cursive; font-size:clamp(3rem,8vw,5rem);
+      color:var(--gold); line-height:1; flex-shrink:0; width:clamp(2.5rem,7vw,4.5rem);
+      text-align:right; text-shadow:0 0 30px rgba(201,169,110,.3);
+    }
+    .acrostic-text {
+      font-family:'IM Fell English',Georgia,serif; font-style:italic;
+      font-size:clamp(1rem,2.2vw,1.3rem); color:#e8d4dc; line-height:1.6; text-align:left;
+    }
+    .acrostic-text em { color:#f0a0b8; font-style:italic; }
+
+    /* ══ AURORA ══ */
+    .aurora-section {
+      position:relative; z-index:1; overflow:hidden;
+      background:#03010a; padding:6rem 2rem; text-align:center;
+      min-height:420px; display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+    }
+    #auroraCanvas { position:absolute; inset:0; width:100%; height:100%; }
+    .aurora-content { position:relative; z-index:2; }
+    .aurora-label { font-family:'Jost',sans-serif; font-weight:200; font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:rgba(180,240,220,.5); margin-bottom:1.2rem; display:block; }
+    .aurora-quote {
+      font-family:'Pinyon Script',cursive; font-size:clamp(2rem,7vw,4.5rem);
+      color:rgba(220,255,240,.9); line-height:1.2; max-width:700px; margin:0 auto;
+      text-shadow:0 0 40px rgba(100,255,180,.25);
+    }
+    .aurora-attr { margin-top:1.5rem; font-family:'Jost',sans-serif; font-weight:200; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(160,220,200,.4); }
+
+    /* ══ BLOOMING ROSE ══ */
+    .rose-section {
+      position:relative; z-index:1; padding:5rem 2rem;
+      background:linear-gradient(160deg,#fdf0f3,#fdf6ee,#f9e8f0);
+      text-align:center; overflow:hidden;
+    }
+    .rose-label { font-family:'Jost',sans-serif; font-weight:200; font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:var(--rose); margin-bottom:1rem; display:block; }
+    .rose-caption {
+      font-family:'Cormorant Garamond',serif; font-style:italic;
+      font-size:clamp(1.1rem,2.5vw,1.45rem); color:var(--muted);
+      max-width:500px; margin:1.8rem auto 0; line-height:1.75;
+    }
+    #bloomSvg { width:clamp(200px,40vw,320px); height:auto; display:block; margin:0 auto; overflow:visible; }
+    /* petals start folded, bloom on .bloomed class */
+    .rose-petal { transform-origin:50% 100%; transform:scaleY(0) rotate(0deg); opacity:0; transition:transform 1s ease, opacity .8s ease; }
+    #bloomSvg.bloomed .rose-petal { transform:scaleY(1); opacity:1; }
+    #bloomSvg.bloomed .rp1 { transition-delay:.0s; }
+    #bloomSvg.bloomed .rp2 { transition-delay:.12s; }
+    #bloomSvg.bloomed .rp3 { transition-delay:.24s; }
+    #bloomSvg.bloomed .rp4 { transition-delay:.36s; }
+    #bloomSvg.bloomed .rp5 { transition-delay:.48s; }
+    #bloomSvg.bloomed .rp6 { transition-delay:.60s; }
+    #bloomSvg.bloomed .rp7 { transition-delay:.72s; }
+    #bloomSvg.bloomed .rp8 { transition-delay:.84s; }
+    #bloomSvg.bloomed .rp9 { transition-delay:.96s; }
+    #bloomSvg.bloomed .rp10{ transition-delay:1.08s; }
+    #bloomSvg.bloomed .rp11{ transition-delay:1.20s; }
+    #bloomSvg.bloomed .rp12{ transition-delay:1.32s; }
+    .rose-stem { stroke-dasharray:200; stroke-dashoffset:200; transition:stroke-dashoffset 1.2s ease .3s; }
+    #bloomSvg.bloomed .rose-stem { stroke-dashoffset:0; }
+    .rose-leaf { transform-origin:0% 50%; transform:scaleX(0); opacity:0; transition:transform .7s ease, opacity .7s ease; }
+    #bloomSvg.bloomed .rose-leaf { transform:scaleX(1); opacity:1; }
+    #bloomSvg.bloomed .rl1 { transition-delay:.6s; }
+    #bloomSvg.bloomed .rl2 { transition-delay:.8s; }
+
+    /* ══ HEARTBEAT ══ */
+    .heartbeat-section {
+      position:relative; z-index:1; padding:4rem 2rem;
+      background:#0d0610; text-align:center; overflow:hidden;
+    }
+    #heartbeatCanvas { display:block; width:100%; max-width:800px; height:100px; margin:0 auto; }
+    .hb-label { font-family:'Jost',sans-serif; font-weight:200; font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:rgba(194,67,90,.5); margin-bottom:1.2rem; display:block; }
+    .hb-text {
+      font-family:'Pinyon Script',cursive; font-size:clamp(1.8rem,5vw,3rem);
+      color:rgba(240,160,184,.85); margin-top:1.4rem;
+      text-shadow:0 0 20px rgba(194,67,90,.3);
+    }
+
+    /* ══ INK-DROP REVEAL ══ */
+    .ink-section {
+      position:relative; z-index:1; padding:5rem 2rem;
+      background:var(--parchment); text-align:center; overflow:hidden;
+    }
+    .ink-label { font-family:'Jost',sans-serif; font-weight:200; font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5rem; display:block; }
+    .ink-heading { font-family:'Pinyon Script',cursive; font-size:clamp(2.5rem,8vw,5rem); color:var(--rose); margin-bottom:3rem; line-height:1; }
+    .ink-lines { max-width:580px; margin:0 auto; }
+    .ink-line {
+      font-family:'IM Fell English',Georgia,serif; font-style:italic;
+      font-size:clamp(1.05rem,2.2vw,1.3rem); color:var(--dark);
+      line-height:1.9; display:block; margin-bottom:.3rem;
+      /* ink mask: text hidden behind ink-colored mask that shrinks away */
+      -webkit-mask-image:linear-gradient(to right,#000 0%,#000 100%);
+      mask-image:linear-gradient(to right,#000 0%,#000 100%);
+      -webkit-mask-size:200% 100%; mask-size:200% 100%;
+      -webkit-mask-position:100% 0; mask-position:100% 0;
+      transition:-webkit-mask-position 1s ease, mask-position 1s ease;
+      opacity:.08;
+    }
+    .ink-line.inked {
+      -webkit-mask-position:0% 0; mask-position:0% 0; opacity:1;
+    }
+    .ink-drop-dot {
+      display:inline-block; width:6px; height:6px; border-radius:50%;
+      background:var(--rose); margin-right:6px; vertical-align:middle;
+      transform:scale(0); transition:transform .4s ease;
+    }
+    .ink-line.inked .ink-drop-dot { transform:scale(1); }
   </style>
 </head>
 <body>
@@ -374,7 +544,7 @@
   </div>
 </div>
 
-<!-- ══ SECRET ══ -->
+<!-- ══ SECRET (original rose) ══ -->
 <div id="secretOverlay">
   <div class="secret-card">
     <span class="secret-icon">🌹</span>
@@ -384,6 +554,31 @@
     <p>You are the most wonderful secret I have ever kept — and the one I most want to tell the whole world about.</p>
     <p>I love you. More than you know. More than I ever quite manage to say.</p>
     <button class="secret-close" id="secretClose">Close ♡</button>
+  </div>
+</div>
+
+<!-- ══ SECRET 2: footer heart ══ -->
+<div id="footerSecret" style="position:fixed;inset:0;z-index:8500;background:rgba(18,8,24,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s;">
+  <div class="secret-card">
+    <span class="secret-icon">🌙</span>
+    <h3>One last secret…</h3>
+    <p>You made it all the way to the end. That means something.</p>
+    <p>I want you to know — even after all the letters, all the poems, all the words — there is still more I feel than I can ever quite say. I don't think that will ever change. You are simply too much, in the very best way.</p>
+    <p>Thank you for existing. Thank you for being exactly you. I love you to the very end of this page, and far, far beyond it.</p>
+    <button class="secret-close" id="footerSecretClose">Close ♡</button>
+  </div>
+</div>
+
+<!-- ══ SECRET 3: hidden dot in promise band ══ -->
+<div id="promiseSecret" style="position:fixed;inset:0;z-index:8500;background:rgba(18,8,24,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s;">
+  <div class="secret-card">
+    <span class="secret-icon">✨</span>
+    <h3>You found the tiny one…</h3>
+    <p>I hid this one very carefully, because this message is the most private of all.</p>
+    <p>You are the only person I have ever truly wanted to make promises to. The only one I have ever meant them all for. Every word in that promise above — I mean it. Every single one.</p>
+    <p>No matter what life looks like, no matter how loud or complicated or uncertain things get — you will always have someone in your corner who thinks you are the most extraordinary person they have ever known.</p>
+    <p>That's me. It will always be me.</p>
+    <button class="secret-close" id="promiseSecretClose">Close ♡</button>
   </div>
 </div>
 
@@ -434,7 +629,6 @@
       <p>You are my calm in the chaos, my home in every place, my favourite hello and my hardest goodbye. You mean more to me than any words I could write — but I will spend every day trying to show you anyway.</p>
       <p><span class="pulse">I love you.</span> Today, tomorrow, and in all the unwritten days ahead of us.</p>
     </div>
-    <!-- SVG animated signature -->
     <div class="letter-sign-svg" id="sig1">
       <p class="thiv-sig" style="color:var(--rose);">THIV</p>
     </div>
@@ -498,6 +692,20 @@
   </div>
 </section>
 
+<!-- SPINNER -->
+<div class="spinner-section">
+  <h2 class="spinner-heading reveal">Spin for a reason</h2>
+  <p class="spinner-sub reveal">Press the button — let the universe remind you why</p>
+  <div class="spinner-wheel-wrap reveal">
+    <div class="spinner-wheel" id="spinnerWheel">
+      <div class="spinner-dot"></div>
+      <div class="spinner-inner-text" id="spinnerText">Press spin…</div>
+    </div>
+  </div>
+  <button class="spinner-btn reveal" id="spinBtn">✦ &nbsp; Spin &nbsp; ✦</button>
+  <p class="spinner-label reveal" id="spinnerLabel">Every spin is a different reason ♡</p>
+</div>
+
 <!-- QUOTE BAND -->
 <div class="quote-band">
   <span class="quote-mark reveal">"</span>
@@ -522,7 +730,11 @@
       <div class="letter-sign-svg" id="sig2">
       <p class="thiv-sig" style="color:#f0a0b8;">THIV</p>
     </div>
+    <div id="nightHiddenLine">
+      ❝ &nbsp; Kamini — even in my quietest moments, you are the loudest, loveliest thing in my heart. &nbsp; ❞
     </div>
+    </div>
+    <p id="nightDoubleHint">✦ &nbsp; double-click to find a secret &nbsp; ✦</p>
   </section>
 </div>
 
@@ -567,12 +779,22 @@
   <h2 class="mosaic-heading reveal">The beauty of us</h2>
   <p class="mosaic-sub reveal">In every season, in every light</p>
   <div class="mosaic-b reveal">
-    <div class="mi"><img src="img5.JPG" alt=""/><div class="mi-caption">Every coffee tastes better beside you</div></div>
+    <div class="mi"><img src="img5.JPG" alt=""/><div class="mi-caption">Every moment feels golden beside you</div></div>
     <div class="mi"><img src="img13.JPG" alt=""/><div class="mi-caption">The world is better when we explore it together</div></div>
     <div class="mi"><img src="img4.JPG" alt=""/><div class="mi-caption">Golden hour was made for you</div></div>
     <div class="mi"><img src="img22.JPG" alt=""/><div class="mi-caption">Together — always the right answer</div></div>
   </div>
 </section>
+
+<!-- AURORA -->
+<div class="aurora-section" id="auroraSection">
+  <canvas id="auroraCanvas"></canvas>
+  <div class="aurora-content">
+    <span class="aurora-label reveal">somewhere above the world</span>
+    <p class="aurora-quote reveal">You are the most beautiful thing<br>I have ever had the privilege<br>of standing under.</p>
+    <p class="aurora-attr reveal">— written beneath an open sky, thinking of you</p>
+  </div>
+</div>
 
 <!-- TIMELINE -->
 <div class="timeline-section">
@@ -580,7 +802,7 @@
   <p class="timeline-sub reveal">Every chapter better than the last</p>
   <div class="timeline">
     <div class="t-item reveal"><div class="t-side"><p class="t-date">The Beginning</p><p class="t-title">The day everything changed</p><p class="t-text">I did not know it then, but the moment we met was the luckiest of my life. Some doors, once opened, change everything that comes after.</p></div><div class="t-dot"></div><div class="t-side"></div></div>
-    <div class="t-item reveal"><div class="t-side"></div><div class="t-dot"></div><div class="t-side"><p class="t-date">The First Chapter</p><p class="t-title">Learning each other</p><p class="t-text">The early days of learning how you take your coffee, what makes you laugh until you cry, and all the small beauties that make you, you.</p></div></div>
+    <div class="t-item reveal"><div class="t-side"></div><div class="t-dot"></div><div class="t-side"><p class="t-date">The First Chapter</p><p class="t-title">Learning each other</p><p class="t-text">The early days of learning what makes you laugh until you cry, all the small quirks that are yours alone, and all the beauties that make you, you.</p></div></div>
     <div class="t-item reveal"><div class="t-side"><p class="t-date">Growing Together</p><p class="t-title">Side by side through everything</p><p class="t-text">The hard days we got through together. The good ones we celebrated. Every season we have shared has deepened what we are to each other.</p></div><div class="t-dot"></div><div class="t-side"></div></div>
     <div class="t-item reveal"><div class="t-side"></div><div class="t-dot"></div><div class="t-side"><p class="t-date">Right Now</p><p class="t-title">This beautiful, ordinary life</p><p class="t-text">Today, I am simply glad — deeply, fully glad — that you are mine and I am yours. There is nowhere I would rather be.</p></div></div>
     <div class="t-item reveal"><div class="t-side"><p class="t-date">What's Ahead</p><p class="t-title">Every chapter yet unwritten</p><p class="t-text">I do not know what the future holds — but I know I want to face it with you. Every adventure, every quiet evening, every year to come.</p></div><div class="t-dot" style="background:var(--gold);box-shadow:0 0 0 2px var(--gold);"></div><div class="t-side"></div></div>
@@ -663,6 +885,56 @@
   </div>
 </section>
 
+<!-- BLOOMING ROSE -->
+<div class="rose-section" id="roseSection">
+  <span class="rose-label reveal">for you</span>
+  <svg id="bloomSvg" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+    <!-- stem -->
+    <path class="rose-stem" d="M100 260 Q95 200 100 160" fill="none" stroke="#4a7c3f" stroke-width="4" stroke-linecap="round"/>
+    <!-- leaves -->
+    <path class="rose-leaf rl1" d="M100 210 Q75 195 65 178 Q82 182 100 210Z" fill="#5a9c4f" opacity=".85"/>
+    <path class="rose-leaf rl2" d="M100 190 Q125 175 135 160 Q118 168 100 190Z" fill="#5a9c4f" opacity=".85"/>
+    <!-- outer petals layer 1 -->
+    <ellipse class="rose-petal rp1" cx="100" cy="120" rx="28" ry="42" fill="#d4506a" opacity=".75" transform="rotate(-40 100 160)"/>
+    <ellipse class="rose-petal rp2" cx="100" cy="120" rx="28" ry="42" fill="#c2435a" opacity=".75" transform="rotate(0 100 160)"/>
+    <ellipse class="rose-petal rp3" cx="100" cy="120" rx="28" ry="42" fill="#d4506a" opacity=".75" transform="rotate(40 100 160)"/>
+    <ellipse class="rose-petal rp4" cx="100" cy="120" rx="28" ry="42" fill="#c2435a" opacity=".75" transform="rotate(80 100 160)"/>
+    <ellipse class="rose-petal rp5" cx="100" cy="120" rx="28" ry="42" fill="#d4506a" opacity=".75" transform="rotate(120 100 160)"/>
+    <ellipse class="rose-petal rp6" cx="100" cy="120" rx="28" ry="42" fill="#c2435a" opacity=".75" transform="rotate(160 100 160)"/>
+    <!-- inner petals layer 2 -->
+    <ellipse class="rose-petal rp7" cx="100" cy="130" rx="20" ry="30" fill="#e0607a" opacity=".9" transform="rotate(-20 100 160)"/>
+    <ellipse class="rose-petal rp8" cx="100" cy="130" rx="20" ry="30" fill="#c2435a" opacity=".9" transform="rotate(40 100 160)"/>
+    <ellipse class="rose-petal rp9" cx="100" cy="130" rx="20" ry="30" fill="#e0607a" opacity=".9" transform="rotate(100 100 160)"/>
+    <ellipse class="rose-petal rp10" cx="100" cy="130" rx="20" ry="30" fill="#c2435a" opacity=".9" transform="rotate(160 100 160)"/>
+    <!-- centre -->
+    <ellipse class="rose-petal rp11" cx="100" cy="148" rx="13" ry="18" fill="#f08090" opacity="1"/>
+    <ellipse class="rose-petal rp12" cx="100" cy="152" rx="7" ry="10" fill="#fcc0c8" opacity="1"/>
+  </svg>
+  <p class="rose-caption reveal">Every rose I could ever give you<br>would fall short of what you deserve.<br>So I grew this one just for you —<br><em>it will never wilt.</em></p>
+</div>
+
+<!-- HEARTBEAT -->
+<div class="heartbeat-section" id="heartbeatSection">
+  <span class="hb-label reveal">a rhythm that belongs to you</span>
+  <canvas id="heartbeatCanvas"></canvas>
+  <p class="hb-text reveal">every beat is for you</p>
+</div>
+
+<!-- INK DROP REVEAL -->
+<div class="ink-section" id="inkSection">
+  <span class="ink-label reveal">things I needed you to know</span>
+  <h2 class="ink-heading reveal">Written in ink</h2>
+  <div class="ink-lines" id="inkLines">
+    <span class="ink-line"><span class="ink-drop-dot"></span>You changed what I thought love was capable of being.</span>
+    <span class="ink-line"><span class="ink-drop-dot"></span>I think about you in the spaces between everything else.</span>
+    <span class="ink-line"><span class="ink-drop-dot"></span>You are the answer to the question I kept asking the universe.</span>
+    <span class="ink-line"><span class="ink-drop-dot"></span>There is no version of my best self that doesn't have you in it.</span>
+    <span class="ink-line"><span class="ink-drop-dot"></span>I am proud of you — quietly, constantly, more than I say.</span>
+    <span class="ink-line"><span class="ink-drop-dot"></span>Being loved by you is the greatest privilege of my life.</span>
+    <span class="ink-line"><span class="ink-drop-dot"></span>I will spend every ordinary day making sure you know it.</span>
+  </div>
+</div>
+
 <!-- LETTER 4 -->
 <section class="section">
   <div class="wax-seal-wrap"><div class="wax-seal" id="seal4"></div></div>
@@ -710,11 +982,25 @@
   <p>To always choose you — on the easy days and the hard ones. To make you laugh as often as I can. To hold your hand through every storm. To love you louder on the days you forget your own worth.</p>
   <p>To show up for you, imperfectly and honestly, every single day. To build a life you are proud of beside someone who is endlessly proud of you.</p>
   <p>This is not just for today. This is for every day we get to have.</p>
-  <div class="heart-row">♡ &nbsp; ♡ &nbsp; ♡</div>
+  <div class="heart-row">♡ &nbsp; <span id="hiddenPromiseStar" style="cursor:pointer;opacity:0.04;font-size:0.6rem;user-select:none;" title="">·</span> &nbsp; ♡</div>
+</div>
+
+<!-- ACROSTIC -->
+<div class="acrostic-section">
+  <span class="acrostic-label reveal">written only for her</span>
+  <h2 class="acrostic-heading reveal">Kamini</h2>
+  <div class="acrostic-poem" id="acrosticPoem">
+    <div class="acrostic-line"><span class="acrostic-letter">K</span><span class="acrostic-text">Kindness lives in you so naturally — it pours out without effort, without thought, and the whole world is warmer for it.</span></div>
+    <div class="acrostic-line"><span class="acrostic-letter">A</span><span class="acrostic-text">And your laugh — God, your laugh — is the finest sound I have ever had the privilege of being the reason for.</span></div>
+    <div class="acrostic-line"><span class="acrostic-letter">M</span><span class="acrostic-text">More myself than I have ever been — that is what I am when I am beside you. You do that without even trying.</span></div>
+    <div class="acrostic-line"><span class="acrostic-letter">I</span><span class="acrostic-text">In every version of my life I could imagine, you are the one I would choose. Every single time, without a moment's hesitation.</span></div>
+    <div class="acrostic-line"><span class="acrostic-letter">N</span><span class="acrostic-text">Nothing ordinary stays ordinary with you near it — you have this gift of making everything feel like it matters, like it's <em>alive.</em></span></div>
+    <div class="acrostic-line"><span class="acrostic-letter">I</span><span class="acrostic-text">I love you — in ways I am still learning to say, in ways I hope you already feel, in ways that will not run out.</span></div>
+  </div>
 </div>
 
 <footer class="footer">
-  <div class="footer-script">Forever &amp; always ♡</div>
+  <div class="footer-script">Forever &amp; always <span id="footerHeart" style="cursor:pointer;user-select:none;" title="Click me…">♡</span></div>
   <p class="footer-small">Made with love &nbsp;·&nbsp; Just for you &nbsp;·&nbsp; Always</p>
 </footer>
 
@@ -722,7 +1008,6 @@
 /* ══════════════════════════════════════
    BOTTLE INTRO
 ══════════════════════════════════════ */
-// Stars on bottle screen
 const bStars = document.getElementById('bottleStars');
 for (let i = 0; i < 60; i++) {
   const s = document.createElement('div'); s.className = 'b-star';
@@ -732,7 +1017,6 @@ for (let i = 0; i < 60; i++) {
 }
 
 function uncorkBottle() {
-  // burst particles from bottle centre
   const bottleEl = document.getElementById('bottleSvg');
   const br = bottleEl.getBoundingClientRect();
   const cx = br.left + br.width / 2, cy = br.top + br.height * 0.3;
@@ -751,7 +1035,6 @@ function uncorkBottle() {
     document.body.appendChild(cp);
     setTimeout(() => cp.remove(), 800);
   }
-  // hide bottle, show loader
   setTimeout(() => {
     document.getElementById('bottleScreen').classList.add('hide');
     setTimeout(() => document.getElementById('loader').style.display = 'flex', 400);
@@ -761,7 +1044,7 @@ function uncorkBottle() {
 /* ══════════════════════════════════════
    LOADER
 ══════════════════════════════════════ */
-document.getElementById('loader').style.display = 'none'; // hidden until bottle dismissed
+document.getElementById('loader').style.display = 'none';
 const loader = document.getElementById('loader');
 const loaderPetals = document.getElementById('loaderPetals');
 const loaderSyms = ['🌸','🌺','🌷','💕','✿'];
@@ -775,7 +1058,6 @@ for (let i = 0; i < 18; i++) {
   loaderPetals.appendChild(lp);
 }
 
-// When loader shown, auto-dismiss after 3.4s
 const loaderObs = new MutationObserver(() => {
   if (loader.style.display !== 'none') {
     setTimeout(() => {
@@ -824,7 +1106,6 @@ try {
   const count = visits.length;
   visitLabel.textContent  = count <= 1 ? 'First time here — welcome ♡' : `Visit ${count} — a new note every time you return ♡`;
 } catch(e) {
-  // localStorage unavailable — pick by day of year
   const doy = Math.floor((new Date() - new Date(new Date().getFullYear(),0,0)) / 86400000);
   loveNoteEl.textContent = notes[doy % notes.length];
   visitLabel.textContent = 'A new note every day ♡';
@@ -982,7 +1263,6 @@ const sCtx       = starCanvas.getContext('2d');
 const drawnStars = [];
 
 function resizeStarCanvas(){
-  const r = darkPoem.getBoundingClientRect();
   starCanvas.width  = darkPoem.offsetWidth;
   starCanvas.height = darkPoem.offsetHeight;
   starCanvas.style.position = 'absolute';
@@ -1005,7 +1285,6 @@ function redrawStars(){
       sCtx.fillStyle=`rgba(255,255,200,${pt.a})`;
       sCtx.fill();
     });
-    // centre glow
     const grd=sCtx.createRadialGradient(star.x,star.y,0,star.x,star.y,12);
     grd.addColorStop(0,'rgba(255,255,180,0.8)');
     grd.addColorStop(1,'rgba(255,255,180,0)');
@@ -1024,7 +1303,6 @@ function addStar(x,y){
   }
   drawnStars.push({x,y,points:pts});
   redrawStars();
-  // heart at centre
   const heart=document.createElement('span'); heart.className='star-tap-heart';
   heart.textContent='♡';
   heart.style.left=x+'px'; heart.style.top=y+'px';
@@ -1047,7 +1325,7 @@ starCanvas.addEventListener('touchstart',e=>{
 },{passive:false});
 
 /* ══════════════════════════════════════
-   CONFETTI BURST on promise section
+   CONFETTI BURST
 ══════════════════════════════════════ */
 let confettiFired = false;
 const confettiColors = ['#c2435a','#c9a96e','#f0d4da','#fff','#9e2f45','#fdf6ee','#f5ede0'];
@@ -1091,8 +1369,6 @@ function fireConfetti(){
   }
 }
 
-
-
 /* ══════════════════════════════════════
    FIREFLIES
 ══════════════════════════════════════ */
@@ -1134,12 +1410,18 @@ setTimeout(launchShootingStar,1500);
    STARS
 ══════════════════════════════════════ */
 const starsEl=document.getElementById('starsEl');
+let brightStarEl = null;
 for(let i=0;i<80;i++){
   const s=document.createElement('div'); s.className='star';
   const sz=Math.random()*2.5+.5;
   s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s;`;
   starsEl.appendChild(s);
 }
+/* one bright special star */
+brightStarEl = document.createElement('div');
+brightStarEl.style.cssText=`position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;left:67%;top:22%;box-shadow:0 0 8px 4px rgba(255,255,200,0.9),0 0 18px 6px rgba(255,220,100,0.5);animation:twinkle 1.2s ease-in-out infinite alternate;cursor:pointer;z-index:5;`;
+brightStarEl.title='';
+starsEl.appendChild(brightStarEl);
 
 /* ══════════════════════════════════════
    CURSOR TRAIL
@@ -1175,17 +1457,371 @@ for(let i=0;i<26;i++){
   canvas.appendChild(p);
 }
 
-
-
 /* ══════════════════════════════════════
-   SECRET
+   SECRET — original rose
 ══════════════════════════════════════ */
 const secretOverlay=document.getElementById('secretOverlay');
 document.getElementById('heroRose').addEventListener('click',()=>secretOverlay.classList.add('open'));
 document.getElementById('secretClose').addEventListener('click',()=>secretOverlay.classList.remove('open'));
 secretOverlay.addEventListener('click',e=>{if(e.target===secretOverlay)secretOverlay.classList.remove('open');});
 
+/* ══════════════════════════════════════
+   SECRET 2 — footer heart
+══════════════════════════════════════ */
+const footerSecret = document.getElementById('footerSecret');
+document.getElementById('footerHeart').addEventListener('click', () => {
+  footerSecret.style.opacity='1'; footerSecret.style.visibility='visible';
+});
+document.getElementById('footerSecretClose').addEventListener('click', () => {
+  footerSecret.style.opacity='0'; footerSecret.style.visibility='hidden';
+});
+footerSecret.addEventListener('click', e => {
+  if(e.target===footerSecret){ footerSecret.style.opacity='0'; footerSecret.style.visibility='hidden'; }
+});
 
+/* ══════════════════════════════════════
+   SECRET 3 — hidden dot in promise band
+══════════════════════════════════════ */
+const promiseSecret = document.getElementById('promiseSecret');
+document.getElementById('hiddenPromiseStar').addEventListener('click', () => {
+  promiseSecret.style.opacity='1'; promiseSecret.style.visibility='visible';
+});
+document.getElementById('promiseSecretClose').addEventListener('click', () => {
+  promiseSecret.style.opacity='0'; promiseSecret.style.visibility='hidden';
+});
+promiseSecret.addEventListener('click', e => {
+  if(e.target===promiseSecret){ promiseSecret.style.opacity='0'; promiseSecret.style.visibility='hidden'; }
+});
+
+/* ══════════════════════════════════════
+   BRIGHT STAR SECRET
+══════════════════════════════════════ */
+(function(){
+  const overlay = document.createElement('div');
+  overlay.id = 'brightStarSecret';
+  overlay.style.cssText='position:fixed;inset:0;z-index:8500;background:rgba(18,8,24,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s;';
+  overlay.innerHTML=`<div class="secret-card"><span class="secret-icon">⭐</span><h3>You found my star…</h3><p>I named this one after you. Somewhere up there, Kamini — there is a light that burns just the way you do: quietly, constantly, and more beautifully than anything else in the sky.</p><p>Whenever I look up, that is the one I look for. And I always find it.</p><button class="secret-close" id="brightStarClose">Close ♡</button></div>`;
+  document.body.appendChild(overlay);
+  function openStar(){ overlay.style.opacity='1'; overlay.style.visibility='visible'; }
+  function closeStar(){ overlay.style.opacity='0'; overlay.style.visibility='hidden'; }
+  if(brightStarEl) brightStarEl.addEventListener('click', openStar);
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) closeStar(); });
+  setTimeout(()=>{
+    const btn = document.getElementById('brightStarClose');
+    if(btn) btn.addEventListener('click', closeStar);
+  }, 100);
+})();
+
+/* ══════════════════════════════════════
+   NIGHT LETTER DOUBLE-CLICK
+══════════════════════════════════════ */
+(function(){
+  const letter = document.getElementById('letter2');
+  const hiddenLine = document.getElementById('nightHiddenLine');
+  const hint = document.getElementById('nightDoubleHint');
+  if(!letter||!hiddenLine) return;
+  letter.addEventListener('dblclick', ()=>{
+    if(!hiddenLine.classList.contains('show')){
+      hiddenLine.classList.add('show');
+      if(hint) hint.style.opacity='0';
+      const flash = document.createElement('div');
+      flash.style.cssText='position:absolute;inset:0;background:rgba(240,160,184,.06);border-radius:4px;pointer-events:none;animation:nightLineReveal .4s ease forwards;';
+      letter.style.position='relative';
+      letter.appendChild(flash);
+      setTimeout(()=>flash.remove(),500);
+    }
+  });
+  /* fade hint in after a moment */
+  setTimeout(()=>{ if(hint&&!hiddenLine.classList.contains('show')) hint.style.transition='opacity 1s'; }, 3000);
+})();
+
+/* ══════════════════════════════════════
+   REASONS SPINNER
+══════════════════════════════════════ */
+(function(){
+  const reasons = [
+    "Your laugh fills every room and stays long after you've left.",
+    "The way you love — fiercely, gently, completely.",
+    "You make even the ordinary feel like something worth remembering.",
+    "Your kindness. It's effortless and it's everywhere.",
+    "The way your eyes light up when you talk about something you love.",
+    "You are the first person I want to tell everything to.",
+    "Your strength on the hard days takes my breath away.",
+    "The small, particular ways you pay attention. You notice everything.",
+    "You feel like home — anywhere, always.",
+    "Your depth. There is always more of you to discover.",
+    "The way you make me want to be better just by being you.",
+    "You are the best thing that has ever happened to me.",
+    "Your grace, even on the days you don't feel it.",
+    "The sound of your voice saying my name.",
+    "Because loving you is the easiest thing I have ever done.",
+    "You carry kindness like it weighs nothing — and it lifts everything.",
+    "Because even in my imagination, the best days always have you in them.",
+  ];
+  let spinning = false;
+  let totalDeg = 0;
+  let lastIdx = -1;
+  const wheel = document.getElementById('spinnerWheel');
+  const text  = document.getElementById('spinnerText');
+  const btn   = document.getElementById('spinBtn');
+  const label = document.getElementById('spinnerLabel');
+  if(!wheel||!text||!btn) return;
+
+  btn.addEventListener('click', ()=>{
+    if(spinning) return;
+    spinning = true;
+    btn.disabled = true;
+    text.classList.add('spinning');
+
+    let idx;
+    do { idx = Math.floor(Math.random()*reasons.length); } while(idx===lastIdx);
+    lastIdx = idx;
+
+    const extraSpins = (5 + Math.floor(Math.random()*4)) * 360;
+    totalDeg += extraSpins + Math.floor(Math.random()*360);
+    wheel.style.transform = `rotate(${totalDeg}deg)`;
+
+    setTimeout(()=>{
+      text.textContent = reasons[idx];
+      text.classList.remove('spinning');
+      spinning = false;
+      btn.disabled = false;
+      if(label) label.textContent = `Reason ${idx+1} of ${reasons.length} — spin again ♡`;
+    }, 2600);
+  });
+})();
+
+/* ══════════════════════════════════════
+   ACROSTIC SCROLL REVEAL
+══════════════════════════════════════ */
+(function(){
+  const lines = document.querySelectorAll('.acrostic-line');
+  if(!lines.length) return;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const idx = Array.from(lines).indexOf(e.target);
+        setTimeout(()=>e.target.classList.add('visible'), idx*160);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.2});
+  lines.forEach(l=>obs.observe(l));
+})();
+
+/* ══════════════════════════════════════
+   AURORA BOREALIS
+══════════════════════════════════════ */
+(function(){
+  const sec = document.getElementById('auroraSection');
+  const cv  = document.getElementById('auroraCanvas');
+  if(!sec||!cv) return;
+  const ctx = cv.getContext('2d');
+  let W, H, rafId, bands=[], active=false;
+
+  function resize(){
+    W = cv.width  = sec.offsetWidth;
+    H = cv.height = sec.offsetHeight;
+    initBands();
+  }
+
+  function initBands(){
+    bands = [];
+    const palettes = [
+      ['rgba(60,220,140,','rgba(40,180,220,','rgba(100,120,255,'],
+      ['rgba(80,200,160,','rgba(60,140,240,','rgba(160,80,220,'],
+      ['rgba(40,240,180,','rgba(20,160,200,','rgba(80,200,255,'],
+    ];
+    const pal = palettes[Math.floor(Math.random()*palettes.length)];
+    for(let i=0;i<5;i++){
+      bands.push({
+        x: Math.random()*W,
+        y: H*(.15 + Math.random()*.4),
+        width: W*(.3+Math.random()*.5),
+        height: H*(.08+Math.random()*.14),
+        speed: .004+Math.random()*.006,
+        phase: Math.random()*Math.PI*2,
+        waveAmp: H*(.04+Math.random()*.06),
+        waveFreq: .5+Math.random()*.8,
+        color: pal[i%pal.length],
+        alpha: .12+Math.random()*.18,
+        drift: (Math.random()-.5)*.4,
+      });
+    }
+  }
+
+  function drawFrame(t){
+    ctx.clearRect(0,0,W,H);
+    /* deep starfield */
+    ctx.fillStyle='#03010a';
+    ctx.fillRect(0,0,W,H);
+    /* faint stars */
+    for(let i=0;i<60;i++){
+      const sx=(i*137.5)%W, sy=(i*93.7)%H;
+      const sa=.2+.5*Math.abs(Math.sin(t*.001+i));
+      ctx.beginPath(); ctx.arc(sx,sy,Math.random()<.1?1.2:.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${sa})`; ctx.fill();
+    }
+    bands.forEach(b=>{
+      b.phase += b.speed;
+      b.x     += b.drift;
+      if(b.x > W+b.width/2)  b.x = -b.width/2;
+      if(b.x < -b.width/2)   b.x =  W+b.width/2;
+
+      const grd = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.width*.6);
+      grd.addColorStop(0, b.color + (b.alpha)   +')');
+      grd.addColorStop(.5,b.color + (b.alpha*.5) +')');
+      grd.addColorStop(1, b.color + '0)');
+
+      ctx.save();
+      ctx.translate(b.x, b.y + Math.sin(b.phase)*b.waveAmp);
+      ctx.scale(1, b.height/b.width);
+      /* wavy distortion via bezier */
+      ctx.beginPath();
+      const steps=24, sw=b.width;
+      ctx.moveTo(-sw/2,0);
+      for(let s=0;s<steps;s++){
+        const px = -sw/2 + (s/steps)*sw;
+        const nx = -sw/2 + ((s+1)/steps)*sw;
+        const py = Math.sin(b.phase + s*b.waveFreq)*b.waveAmp*.4;
+        const ny = Math.sin(b.phase + (s+1)*b.waveFreq)*b.waveAmp*.4;
+        ctx.bezierCurveTo(px+sw/steps/2,py-10, nx-sw/steps/2,ny-10, nx,ny);
+      }
+      for(let s=steps;s>=0;s--){
+        const nx = -sw/2 + (s/steps)*sw;
+        const ny = Math.sin(b.phase + s*b.waveFreq)*b.waveAmp*.4 + b.height;
+        const px = -sw/2 + ((s>0?s-1:0)/steps)*sw;
+        const py = Math.sin(b.phase + (s>0?s-1:0)*b.waveFreq)*b.waveAmp*.4 + b.height;
+        ctx.bezierCurveTo(nx-sw/steps/2,ny+10, px+sw/steps/2,py+10, px,py);
+      }
+      ctx.closePath();
+      ctx.fillStyle=grd;
+      ctx.globalAlpha=1;
+      ctx.filter='blur(18px)';
+      ctx.fill();
+      ctx.filter='none';
+      ctx.restore();
+    });
+    rafId=requestAnimationFrame(drawFrame);
+  }
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting&&!active){ active=true; resize(); rafId=requestAnimationFrame(drawFrame); }
+      else if(!e.isIntersecting&&active){ active=false; cancelAnimationFrame(rafId); }
+    });
+  },{threshold:.1});
+  obs.observe(sec);
+  window.addEventListener('resize',()=>{ if(active) resize(); });
+})();
+
+/* ══════════════════════════════════════
+   BLOOMING ROSE
+══════════════════════════════════════ */
+(function(){
+  const svg = document.getElementById('bloomSvg');
+  if(!svg) return;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        setTimeout(()=>svg.classList.add('bloomed'), 200);
+        obs.unobserve(svg);
+      }
+    });
+  },{threshold:.4});
+  obs.observe(svg);
+})();
+
+/* ══════════════════════════════════════
+   HEARTBEAT LINE
+══════════════════════════════════════ */
+(function(){
+  const sec = document.getElementById('heartbeatSection');
+  const cv  = document.getElementById('heartbeatCanvas');
+  if(!sec||!cv) return;
+  const ctx = cv.getContext('2d');
+  let W, H, offset=0, rafId, active=false;
+
+  /* one ECG beat shape — flat, small bump, big spike, dip, recovery */
+  function beatY(x){
+    const cycle = 200; /* px per beat */
+    const t = ((x % cycle) + cycle) % cycle;
+    if(t < 60)  return 0;
+    if(t < 70)  return -(t-60)*1.5;
+    if(t < 80)  return -15 + (t-70)*1.5;
+    if(t < 85)  return 0;
+    if(t < 90)  return -(t-85)*14;  /* big spike up */
+    if(t < 95)  return -70+(t-90)*28; /* spike down */
+    if(t < 100) return 70-(t-95)*14;  /* recovery */
+    if(t < 110) return 0;
+    return 0;
+  }
+
+  function resize(){
+    W = cv.width  = sec.offsetWidth;
+    H = cv.height = 100;
+    cv.style.height='100px';
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const midY = H/2;
+    /* glow trail */
+    ctx.shadowColor='#c2435a';
+    ctx.shadowBlur=12;
+    ctx.strokeStyle='#c2435a';
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    let started=false;
+    for(let x=0;x<W;x++){
+      const y = midY + beatY(x - offset);
+      if(!started){ ctx.moveTo(x,y); started=true; }
+      else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+    ctx.shadowBlur=0;
+    /* lighter overlay for depth */
+    ctx.strokeStyle='rgba(240,160,184,.4)';
+    ctx.lineWidth=1;
+    ctx.beginPath();
+    started=false;
+    for(let x=0;x<W;x++){
+      const y = midY + beatY(x - offset + 4);
+      if(!started){ ctx.moveTo(x,y); started=true; }
+      else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+    offset = (offset+1.4) % 200;
+    rafId=requestAnimationFrame(draw);
+  }
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting&&!active){ active=true; resize(); rafId=requestAnimationFrame(draw); }
+      else if(!e.isIntersecting&&active){ active=false; cancelAnimationFrame(rafId); }
+    });
+  },{threshold:.1});
+  obs.observe(sec);
+  window.addEventListener('resize',()=>{ if(active) resize(); });
+})();
+
+/* ══════════════════════════════════════
+   INK-DROP REVEAL
+══════════════════════════════════════ */
+(function(){
+  const lines = document.querySelectorAll('.ink-line');
+  if(!lines.length) return;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const idx = Array.from(lines).indexOf(e.target);
+        setTimeout(()=>e.target.classList.add('inked'), idx*220);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.15, rootMargin:'0px 0px -40px 0px'});
+  lines.forEach(l=>obs.observe(l));
+})();
 
 /* ══════════════════════════════════════
    SCROLL REVEAL
